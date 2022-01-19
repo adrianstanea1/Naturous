@@ -1,0 +1,107 @@
+.form {
+    display: flex;
+    // flex-direction: column;
+    flex-wrap: wrap;
+
+    color: $color-grey-dark;
+
+    &__group {
+        width: 100%;
+        &:not(:last-child) {
+            margin-bottom: 2rem;
+        }
+    }
+    &__input {
+        font-size: 1.6rem;
+        font-family: inherit;
+
+        padding: 1.5rem 2rem;
+
+        border: 0;
+        border-bottom: 3px solid transparent;
+
+        border-radius: 4px;
+        background-color: rgba($color-white, 0.5);
+
+        width: 90%;
+        display: block;
+        transition: all 350ms ease;
+
+        &:focus {
+            outline: none;
+            box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+            border-bottom: 3px solid $color-primary;
+        }
+
+        &::placeholder {
+            color: rgba($color-black, 0.5);
+        }
+
+        &:focus[type="email"]:invalid,
+        &:focus[type="text"]:invalid {
+            border-bottom: 3px solid $color-secondary-dark;
+        }
+    }
+    // + is the ADJACENT sibling
+    // ~ is the general use
+    &__input:placeholder-shown + &__label {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-200%);
+    }
+
+    &__label {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-left: 2rem;
+        margin-top: 0.7rem;
+        display: block;
+
+        transition: all 300ms ease-in-out;
+    }
+
+    &__radio-group {
+        display: inline-block;
+        width: calc(50% - 1px); //i dk why it wont work
+    }
+
+    &__radio-label {
+        font-size: $default-font-size;
+        cursor: pointer;
+
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    &__radio-button {
+        display: inline-block;
+        margin-right: 1.5rem;
+        height: 3rem;
+        width: 3rem;
+        border: 3px solid $color-primary;
+        border-radius: 50%;
+
+        &::after {
+            content: " ";
+            display: block;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: $color-primary;
+            transform: scale(0.6);
+            opacity: 0;
+
+            transition: opacity 200ms ease;
+        }
+    }
+
+    &__radio-input {
+        position: absolute;
+        visibility: hidden;
+    }
+
+    &__radio-input:checked ~ &__radio-label &__radio-button:after {
+        opacity: 1;
+    }
+}

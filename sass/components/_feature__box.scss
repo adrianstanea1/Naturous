@@ -1,0 +1,32 @@
+.feature__box {
+    display: flex;
+    flex-direction: column;
+
+    background-color: rgba($color-white, 0.8);
+    font-size: 1.5rem;
+    padding: 2.5rem;
+    text-align: center;
+
+    border-radius: 3px;
+
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.2);
+    transition: all 250ms ease;
+    &:hover {
+        transform: translateY(-0.5rem) scale(1.05);
+    }
+
+    &-icon {
+        font-size: 6rem;
+        margin: 1.5rem auto 2.5rem;
+
+        background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+        -webkit-background-clip: text; //i clip the bg to the form of the text
+
+        background-clip: text;
+        color: transparent;
+    }
+
+    &-text {
+        color: rgba($color-black, 0.7);
+    }
+}

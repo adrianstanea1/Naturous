@@ -1,0 +1,87 @@
+/* MAIN CONTAINER */
+// .header {
+//     // height: 95vh;
+//     background-image: linear-gradient(to right bottom, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)),
+//         url(../img/hero.jpg);
+//     /* It always tries to fit the img inse the box */
+//     background-size: cover;
+//     /* No matter the viewport size, it will always try to show the top of the img and crops the part we dont want */
+//     background-position: top;
+//     /*
+//     Defines a polygon with points from top left and goes clock wise x is left to right y is top to bottom
+//     clip-path: polygon(x y, x y, x y); */
+
+//     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+//     /* clip-path: polygon(50% 0, 100% 95%, 0 95%); */
+//     position: relative;
+
+//     &__logo-box {
+//         /* I make the parent relative and the children absolute, this way i can position based on the parent position, elswhere it would be based on the page  */
+//         position: absolute;
+//         top: 4rem;
+//         left: 4rem;
+//     }
+
+//     &__logo {
+//         /* It always keeps the same height and the width is automatically 100% */
+//         height: 3.5rem;
+//     }
+
+//     /* HEADING TEXT CONTAINER */
+//     &__text-box {
+//         position: absolute;
+//         /* This shifts the items based on the parent */
+//         top: 40%;
+//         left: 50%;
+//         /* The transform shifts it based on where it previously ended*/
+//         transform: translate(-50%, -50%);
+//         text-align: center;
+//     }
+// }
+
+.header {
+    // grid-row: head-start / head - end;
+    height: calc(100vh - 3rem);
+
+    background-image: linear-gradient(to right bottom, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)),
+        url(../../img/hero.jpg);
+    background-size: cover;
+    background-position: top;
+
+    clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    position: relative;
+
+    @include respondMax($bp-mobile) {
+        height: 100vh;
+        clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+    }
+
+    &__logo-box {
+        width: 5rem;
+        height: 5rem;
+
+        position: absolute;
+        top: 0%;
+        left: 0;
+        margin: 4rem;
+        img {
+            width: 100%;
+        }
+    }
+
+    &__text-box {
+        transform: translateY(-25%);
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}

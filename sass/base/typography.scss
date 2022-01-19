@@ -1,0 +1,96 @@
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    /* font-size: 16px; */
+    line-height: 1.7;
+    // color: $color-grey-dark;
+}
+
+.heading-primary {
+    text-transform: uppercase;
+
+    color: $color-white;
+
+    /* It apperas that we have some unwanted shake so we use this even though it s not so obvious why;
+    this should block us from seeing a revolution around of 180deg */
+    backface-visibility: hidden;
+    margin-bottom: 6rem;
+
+    &--main {
+        display: block;
+        font-size: 6rem;
+        font-weight: 400;
+        letter-spacing: 3.5rem;
+        animation: moveInLeft $heading-animation ease-out;
+
+        @include respondMax($bp-mobile) {
+            font-size: 5rem;
+            letter-spacing: 1rem;
+        }
+    }
+
+    &--sub {
+        display: block;
+        font-size: 2rem;
+        letter-spacing: 1.75rem;
+        font-weight: 300;
+        animation: moveInRight $heading-animation ease-out;
+
+        @include respondMax($bp-mobile) {
+            letter-spacing: 0.5rem;
+        }
+
+        /* Animation delay 
+                    iteration-count
+                    timing
+        */
+    }
+}
+
+.heading-secondary {
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+
+    background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+    display: inline-block; //the bg image doesent go span to all the screen
+
+    //We must set this to be compatible on other browsers other than chrome
+    -webkit-background-clip: text; //i clip the bg to the form of the text
+
+    background-clip: text; //i clip the bg to the form of the text
+    color: transparent; //i see only the clipped path
+    letter-spacing: 2px;
+
+    transition: all 200ms ease;
+
+    @include respondMax($bp-tablet-portrait) {
+        font-size: 3rem;
+    }
+
+    @include respondMax($bp-mobile) {
+        font-size: 2.5rem;
+    }
+
+    &:hover {
+        transform: skew(-10deg, 1deg);
+        text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2);
+    }
+
+    text-align: center;
+}
+
+.heading-tertiary {
+    font-size: $default-font-size;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.paragraph {
+    font-size: $default-font-size;
+    text-align: justify;
+    &:not(:last-child) {
+        //when i have multiple paragraphs they will separate but the last one
+        margin-bottom: 3rem;
+    }
+}

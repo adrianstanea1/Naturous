@@ -1,0 +1,55 @@
+.photo {
+    // display: block;
+    // width: 100%;
+    // height: 100%;
+    // object-fit: cover;
+
+    // &--1 {
+    //     grid-row: 1 / span 3;
+    //     grid-column: 1 / span 8;
+    //     z-index: 0;
+    // }
+
+    // &--2 {
+    //     grid-row: 3 / span 3;
+    //     grid-column: 2 / span 8;
+    //     z-index: 2;
+    // }
+
+    // &--3 {
+    //     grid-row: 2 / span 3;
+    //     grid-column: 5 / span 8;
+    //     z-index: 1;
+    // }
+
+    width: 60%;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
+    border-radius: 0.75rem;
+    position: absolute;
+    z-index: 1;
+    transition: all 350ms ease;
+
+    outline-offset: 1.5rem;
+
+    &--1 {
+        left: 5%;
+        top: 20%;
+    }
+
+    &--2 {
+        right: 5%;
+        top: 25%;
+    }
+
+    &--3 {
+        left: 20%;
+        top: 45%;
+    }
+
+    &:hover {
+        outline: 0.8rem solid $color-primary; //we use this rather than the border bcs we can offset it
+        transform: scale(1.2) translateY(-0.5rem);
+        z-index: 10;
+        box-shadow: 0 2.5rem 4rem rgba(0, 0, 0, 0.7);
+    }
+}

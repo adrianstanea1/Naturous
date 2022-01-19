@@ -1,0 +1,185 @@
+.card {
+    $card-height: 55rem;
+
+    //POSITIONING + REPSONSIVE
+    &__group {
+        display: flex;
+        flex-wrap: wrap;
+        row-gap: 4vw;
+        column-gap: 5vw;
+        justify-content: center;
+
+        @include respondMax($bp-mobile) {
+            $card-height: 65rem;
+
+            flex-direction: column;
+            align-items: center;
+            row-gap: 5rem;
+
+            & > * {
+                height: $card-height;
+                width: 100%;
+                max-width: 50rem;
+            }
+        }
+    }
+
+    //FUNCTIONALITY
+    //with higher values we achieve a better result, bcs a small val will create an overexagerated effect that looks bad
+    perspective: 150rem;
+    -moz-perspective: 150rem;
+
+    height: $card-height; //otherwise it collapses due to the positionning amd the perspective doesent apply
+
+    width: 35rem;
+    position: relative;
+
+    &__side {
+        // color: #fff;
+        // font-size: 3rem;
+        height: $card-height;
+        // width: 20vw;
+        transition: all 400ms ease-in;
+
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        width: 100%;
+
+        backface-visibility: hidden;
+        border-radius: 0.5rem;
+        box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+
+        overflow: hidden; //the corners of the img will appear rounded bcs they overflow the border radius
+
+        &--front {
+            background-color: $color-white;
+        }
+
+        &--back {
+            transform: rotateY(-180deg);
+
+            &-1 {
+                background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);
+            }
+
+            &-2 {
+                background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+            }
+
+            &-3 {
+                background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark);
+            }
+        }
+    }
+
+    &:hover &__side--front {
+        transform: rotateY(180deg);
+    }
+
+    &:hover &__side--back {
+        transform: rotateY(0);
+    }
+
+    //FRONT SIDE STYLINGS
+
+    &__picture {
+        background-size: cover;
+        height: 50%;
+        // border-radius: 0.5rem 0.5rem 0 0;
+        background-blend-mode: screen;
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+
+        &--1 {
+            background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark), url(../../img/nat-5.jpg); //i think it automatically converts to the proper path when compiled
+        }
+
+        &--2 {
+            background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark), url(../../img/nat-6.jpg);
+        }
+        &--3 {
+            background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark), url(../../img/nat-7.jpg);
+        }
+    }
+
+    &__heading {
+        font-size: 2.8rem;
+        font-weight: 300;
+        text-align: right;
+        text-transform: uppercase;
+        color: $color-white;
+
+        position: absolute;
+        top: 30%;
+        right: 5%;
+
+        width: 75%;
+    }
+
+    &__heading-span {
+        padding: 1rem 1.5rem;
+        //when it spans on multiple line it applies the padding to it also, otherwise it works only for the first
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+
+        &--1 {
+            background-image: linear-gradient(to right bottom, rgba($color-secondary-light, 0.85), rgba($color-secondary-dark, 0.85));
+        }
+
+        &--2 {
+            background-image: linear-gradient(to right bottom, rgba($color-primary-light, 0.85), rgba($color-primary-dark, 0.85));
+        }
+
+        &--3 {
+            background-image: linear-gradient(to right bottom, rgba($color-tertiary-light, 0.85), rgba($color-tertiary-dark, 0.85));
+        }
+    }
+
+    &__details {
+        padding: 3rem;
+
+        display: flex;
+        align-items: center;
+
+        ul {
+            list-style: none;
+            width: 80%;
+            margin: 0 auto;
+            li {
+                text-align: center;
+                font-size: 1.5rem;
+                padding: 1rem;
+
+                &:not(:last-child) {
+                    border-bottom: 1px solid $color-grey-light-2;
+                }
+            }
+        }
+    }
+
+    //BACK SIDE STYLE
+
+    &__cta {
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__price-box {
+        text-align: center;
+        margin-bottom: 8rem;
+        color: $color-white;
+    }
+
+    &__price-only {
+        font-size: 1.4rem;
+        text-transform: uppercase;
+    }
+
+    &__price-value {
+        font-size: 6rem;
+        font-weight: 100;
+    }
+}

@@ -1,0 +1,104 @@
+.story {
+    width: 78%;
+    max-width: $max-width;
+    margin: 0 auto;
+    box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.2);
+    background-color: rgba($color-white, 0.6);
+    border-radius: 3px;
+    padding: 6rem;
+
+    font-size: $default-font-size;
+
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+
+    transform: skew(-15deg);
+
+    @include respondMax($bp-tablet-portrait) {
+        width: 85%;
+        // transform: skewX(-10deg);
+        // padding: 4rem 2rem;
+    }
+
+    @include respondMax($bp-mobile) {
+        flex-direction: column;
+        width: 100%;
+        transform: skew(0);
+        border-radius: 1rem;
+    }
+
+    &:not(:last-child) {
+        margin-bottom: 10rem;
+    }
+
+    &__shape {
+        flex: 1 0 30%;
+        position: relative;
+        overflow: hidden;
+
+        transition: all 400ms ease;
+        transform: skew(15deg);
+
+        @include respondMax($bp-tablet-portrait) {
+        }
+
+        @include respondMax($bp-mobile) {
+            transform: skew(0);
+        }
+
+        & .circle {
+            width: 15rem;
+            height: 15rem;
+
+            border-radius: 50%;
+
+            background-color: black;
+            transition: all 400ms ease;
+        }
+
+        &:hover {
+            transform: skewX(15deg) scale(1.1) translateY(-0.5rem);
+
+            @include respondMax($bp-mobile) {
+                transform: skew(0) scale(1.1) translateY(-0.5rem);
+            }
+
+            .story__caption {
+                transform: translate(-50%, -50%);
+                opacity: 1;
+            }
+
+            .circle {
+                filter: blur(2px) brightness(70%);
+            }
+        }
+    }
+
+    &__text {
+        flex: 1 100%;
+        text-align: justify;
+
+        transform: skewX(15deg);
+
+        @include respondMax($bp-mobile) {
+            transform: skew(0);
+        }
+    }
+
+    &__caption {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 150%);
+        opacity: 0;
+        text-transform: uppercase;
+        color: $color-white;
+        font-size: 1.8rem;
+        text-align: center;
+
+        word-spacing: 50rem; //make the name go in one line each
+
+        transition: all 400ms ease;
+    }
+}

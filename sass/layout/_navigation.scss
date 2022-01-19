@@ -1,0 +1,184 @@
+.navigation {
+    // position: absolute;
+
+    &.active {
+        .navigation {
+            &__background {
+                transform: scale(100);
+            }
+
+            &__nav {
+                width: 100vw;
+                opacity: 1;
+                visibility: initial;
+            }
+
+            &__link {
+                :first-child {
+                    transform: translateX(-50%);
+                }
+            }
+
+            &__button {
+                &:hover {
+                    .icon {
+                        transform: scale(1.25);
+                    }
+                }
+                .icon {
+                    transform: rotate(0turn);
+
+                    .fas {
+                        transform: translate(-50%, -50%) rotate(0deg);
+                    }
+                    .fa-bars {
+                        opacity: 0;
+                    }
+                    .fa-times {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+
+    &__background {
+        height: 6rem;
+        width: 6rem;
+        border-radius: 50%;
+        position: fixed;
+        top: 6.5rem;
+        right: 6rem;
+        z-index: 100;
+        // box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
+
+        background-image: radial-gradient($color-primary-light, $color-primary-dark);
+
+        transition: all 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+
+        @include respondMax($bp-mobile) {
+            height: 5rem;
+            width: 5rem;
+        }
+    }
+
+    &__button {
+        color: $color-primary-dark;
+        display: inline-block;
+        background-color: $color-white;
+        height: 7rem;
+        width: 7rem;
+        border-radius: 50%;
+        position: fixed;
+        top: 6rem;
+        right: 5.5rem;
+        z-index: 200;
+        border: none;
+        cursor: pointer;
+
+        box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
+        transform: rotate(0deg);
+        font-size: 3rem;
+
+        @include respondMax($bp-mobile) {
+            height: 6rem;
+            width: 6rem;
+        }
+
+        .icon {
+            position: relative;
+            transition: all 200ms ease;
+
+            .fas {
+                position: absolute;
+
+                transition: all 200ms ease;
+
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) rotate(720deg);
+            }
+
+            .fa-times {
+                opacity: 0;
+            }
+            .fa-bars {
+                opacity: 1;
+            }
+        }
+
+        &:hover {
+            .icon {
+                transform: scale(1.25);
+            }
+        }
+    }
+
+    &__nav {
+        height: 100vh;
+        // width: 100vw;
+        position: fixed;
+        top: 0%;
+        left: 0;
+        z-index: 150;
+        // background-color: rebeccapurple;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        // @!!!!!
+        visibility: hidden;
+        width: 0;
+        opacity: 0;
+
+        transition: all 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    }
+
+    &__list {
+        // display: flex;
+        // flex-direction: column;
+        // align-items: center;
+        text-align: center;
+    }
+
+    &__item {
+        list-style: none;
+        margin: 1rem;
+    }
+
+    &__link {
+        span {
+            font-size: 3rem;
+            font-weight: 300;
+            margin-right: 2rem;
+            color: currentColor;
+        }
+
+        &:link,
+        &:visited {
+            display: inline-block;
+
+            text-align: center;
+
+            font-size: 3rem;
+            font-weight: 300;
+            color: $color-white;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 0.5rem 2rem;
+
+            background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-white 50%);
+            background-size: 250%;
+            transition: all 500ms ease;
+        }
+
+        &:hover,
+        &:active {
+            background-position: 100%;
+            color: $color-primary;
+            transform: translateX(1rem);
+
+            box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
+        }
+    }
+}

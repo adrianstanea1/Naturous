@@ -1,0 +1,70 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+
+    /* By default it s not inherited so i set it on the body and then make all elements inherit */
+    box-sizing: inherit;
+}
+
+html {
+    overflow-x: hidden;
+
+    font-size: base-font-size(10px); //1rem = 10px
+
+    @include respondMax($bp-tablet-landscape) {
+        font-size: base-font-size(9px);
+    }
+
+    @include respondMax($bp-tablet-portrait) {
+        font-size: base-font-size(8px);
+    }
+
+    @include respondMax($bp-mobile) {
+        font-size: base-font-size(7px);
+    }
+
+    //Special features for devices with with over this one
+    @include respondMin($bp-big-desktop) {
+        font-size: base-font-size(12px);
+    }
+}
+
+/* WE want typography on the body bcs it will be inherited by all the childeren, usually is more efficient and better practice */
+body {
+    box-sizing: border-box;
+    background-color: $color-grey-light-1;
+}
+
+// This fixes the overflox on mobile
+html,
+body {
+    overflow-x: hidden;
+}
+
+.container {
+    // display: grid;    // width: 100vw;
+    // grid-template-rows: [head-start] 95vh [head-end];
+    // grid-template-columns:
+    //     [full-start] minmax(4rem, 1fr)
+    //     repeat(8, [center-start] minmax(min-content, 15rem) [center-end])
+    //     minmax(4rem, 1fr) [full-end];
+
+    padding: 3rem;
+
+    @include respondMax($bp-tablet-portrait) {
+        padding: 0;
+    }
+
+    &.hide {
+        overflow: hidden;
+    }
+}
+
+.main {
+    background-color: $color-grey-light-1;
+
+    & > * {
+    }
+}

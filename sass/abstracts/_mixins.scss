@@ -1,0 +1,76 @@
+@mixin flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin abssoluteCenter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin respondMax($bp) {
+    @media (max-width: ($bp/16px) * 1em) {
+        @content;
+    }
+}
+
+@mixin respondMin($bp) {
+    @media (min-width: ($bp/16px) * 1em) {
+        @content;
+    }
+}
+
+//Media querry manager
+
+// 0 -600 => phone
+//  600 - 900 => tablet portrait
+// 900 - 1200 => tablet landscape
+// >1200 desktop
+// > 1800px => big desktop monitor
+
+// @mixin respond-phone {
+//     @media (max-width: 600px) {
+//         @content;
+//     }
+// }
+
+/*
+    Breakpoint agruments:
+        -phone
+        -tablet-port
+        -tablet-land
+        -big-desktop
+*/
+
+//the rem and em are both based on the root font size but we use always em bcs they are better supported
+
+// $bp-mobile: 37.5em; //600px
+// $bp-tablet-port: 56.25em; //900px
+// $bp-tablet-landscape: 75em; //1200px
+// $bp-big-desktop: 112.5em; //1800px
+
+// @mixin responsive($bp) {
+//     @if $bp == mobile {
+//         @media (max-width: 600px) {
+//             @content;
+//         }
+//     }
+//     @if $bp == tablet-port {
+//         @media (max-width: $bp-tablet-port) {
+//             @content;
+//         }
+//     }
+//     @if $bp == tablet-land {
+//         @media (max-width: $bp-tablet-landscape) {
+//             @content;
+//         }
+//     }
+//     @if $bp == big-desktop {
+//         @media (max-width: $bp-big-desktop) {
+//             @content;
+//         }
+//     }
+// }
